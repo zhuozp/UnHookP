@@ -16,7 +16,7 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.zhuozp:UnHookP:v1.1.0'
+	        implementation 'com.github.zhuozp:UnHookP:v1.0.0'
 	}
 ```
 
