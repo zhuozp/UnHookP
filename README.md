@@ -74,4 +74,6 @@ HotResManager.getInstance().initRes(initRes);
     }
 ```
 
+若应用中使用applicationContext获取文本，则需要在Application中重载getResource，并用ProxyResource代替，和Activity的用法一致
+
 #### 给个star赞吧
