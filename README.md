@@ -1,6 +1,8 @@
 # UnHookP
 一种更简单，更简洁的资源热更新，支持单个activity下是否支持热更新，支持文本、颜色、背景色、图片热更新
 
+[原理](https://github.com/zhuozp/UnHookP/wiki)
+
 #### 使用
 
 gradle设置：
