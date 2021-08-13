@@ -16,11 +16,14 @@ allprojects {
 	}
 ```
 
+
 ```
 dependencies {
 	        implementation 'com.github.zhuozp:UnHookP:v1.0.0'
 	}
 ```
+
+若目标版本小于30，则可以继续使用v1.0.0版本
 
 代码：
 
