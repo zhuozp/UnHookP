@@ -74,4 +74,18 @@ HotResManager.getInstance().initRes(initRes);
     }
 ```
 
+#### dex相关
+
+生成dex文件类似如下：
+~/Library/Android/sdk/build-tools/28.0.3/dx --dex --output hook.dex reflection/build/intermediates/intermediate-jars/debug/classes.jar
+读取dex文件内容, 拷贝asset数据到本地存储的时候可以直接读取，dex文件为US_ASCII码格式
+```
+byte[] result = copyAssetFile(context, "hook.dex", code.getAbsolutePath());
+DexFile dexFile = new DexFile(code);
+dexFile = new DexFile(code);
+String encodeDex = Base64.encodeToString(result, Base64.NO_WRAP);
+
+```
+
+
 #### 给个star赞吧

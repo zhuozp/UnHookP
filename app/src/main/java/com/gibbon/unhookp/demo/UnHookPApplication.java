@@ -1,7 +1,9 @@
 package com.gibbon.unhookp.demo;
 
 import android.app.Application;
+import android.content.Context;
 
+import com.gibbon.unhookp.core.UpdateResHook;
 import com.gibbon.unhookp.manager.HotResManager;
 
 import java.util.HashMap;
@@ -10,6 +12,13 @@ import java.util.HashMap;
  * Created by zhipengzhuo on 2020/11/7 19:59
  */
 public class UnHookPApplication extends Application {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+//        PHook.unseal(base);
+        UpdateResHook.hook(base);
+    }
 
     @Override
     public void onCreate() {

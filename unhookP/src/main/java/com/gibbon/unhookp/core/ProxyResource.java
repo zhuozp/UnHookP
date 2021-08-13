@@ -137,7 +137,7 @@ public class ProxyResource extends Resources {
                           boolean readAndroidTheme) {
         if (iUnHookPTextStrategy != null && iUnHookPTextStrategy.adaptText() && view instanceof TextView) {
 
-            int[] attrArrays = getReflectField("com.android.internal.R$styleable", "TextView");
+            int[] attrArrays = UpdateResHook.sAttrArrays;
 
             if (inheritContext && parent != null) {
                 context = parent.getContext();
@@ -152,8 +152,8 @@ public class ProxyResource extends Resources {
             final Theme theme = TintContextWrapper.wrap(context).getTheme();
             TypedArray a = theme.obtainStyledAttributes(attrs, attrArrays, android.R.attr.textViewStyle, 0);
 
-            int textIdAttr = getIntReflectField("com.android.internal.R$styleable", "TextView_text");
-            int hintIdAttr = getIntReflectField("com.android.internal.R$styleable", "TextView_hint");
+            int textIdAttr = UpdateResHook.sTextIdAttr;
+            int hintIdAttr = UpdateResHook.sTextIdAttr;
 
             int textId = a.getResourceId(textIdAttr, -1);
             int hindId = a.getResourceId(hintIdAttr, -1);
@@ -178,31 +178,5 @@ public class ProxyResource extends Resources {
 
             a.recycle();
         }
-    }
-
-    public int getIntReflectField(String className,String fieldName){
-        int result = -1;
-        try {
-            Class<?> clz = Class.forName(className);
-            Field field = clz.getField(fieldName);
-            field.setAccessible(true);
-            result = field.getInt(null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public int[] getReflectField(String className,String fieldName){
-        int[] result = new int[0];
-        try {
-            Class<?> clz = Class.forName(className);
-            Field field = clz.getField(fieldName);
-            field.setAccessible(true);
-            result = (int[]) field.get(null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
     }
 }
