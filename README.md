@@ -19,11 +19,15 @@ allprojects {
 
 ```
 dependencies {
-	        implementation 'com.github.zhuozp:UnHookP:v1.0.0'
+	        implementation 'com.github.zhuozp:UnHookP:v1.0.0'    若目标版本小于30，则可以继续使用v1.0.0版本
+		
+		implementation 'com.github.zhuozp.UnHookP:reflection:v2.0.0'   目标版本大于等于30的时候，使用v2.0.0版本
 	}
 ```
 
-若目标版本小于30，则可以继续使用v1.0.0版本
+
+
+
 
 代码：
 
@@ -35,6 +39,9 @@ HashMap<String, String> initRes = new HashMap<>();
 initRes.put("btn_test2", "我的原始文本是--->这是初始文本2");
 initRes.put("btn_test3", "我的原始文本是--->这是初始文本3");
 HotResManager.getInstance().initRes(initRes);
+
+// 使用v2.0.0加上以下调用
+UpdateResHook.hook(base);
 ```
 
 在Activity中使用核心功能：
