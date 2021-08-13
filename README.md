@@ -1,6 +1,8 @@
 # UnHookP
 一种更简单，更简洁的资源热更新，支持单个activity下是否支持热更新，支持文本、颜色、背景色、图片热更新
 
+[原理](https://github.com/zhuozp/UnHookP/wiki)
+
 #### 使用
 
 gradle设置：
@@ -74,6 +76,8 @@ HotResManager.getInstance().initRes(initRes);
     }
 ```
 
+若应用中使用applicationContext获取文本，则需要在Application中重载getResource，并用ProxyResource代替，和Activity的用法一致
+
 #### dex相关
 
 生成dex文件类似如下：
@@ -86,6 +90,5 @@ dexFile = new DexFile(code);
 String encodeDex = Base64.encodeToString(result, Base64.NO_WRAP);
 
 ```
-
 
 #### 给个star赞吧
